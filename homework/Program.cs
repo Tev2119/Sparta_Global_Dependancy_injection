@@ -10,12 +10,14 @@ namespace homework
     {
         static void Main(string[] args)
         {
-            Mansion Mn = new Mansion();
+            IArchitecture Mn = Properties.getProperty("Mansion");
 
-            Mn.
+
+
         }
-        
-        public interface architecture
+
+    }
+        public interface IArchitecture
         {
             void numOfBedrooms();
             void doors();
@@ -23,8 +25,8 @@ namespace homework
             void cleaners();
             void windows();
         }
-        public class Mansion: architecture
-        {
+        public class Mansion: IArchitecture
+    {
             public void numOfBedrooms()
             {
                 Console.WriteLine("i have 6 bedrroms");
@@ -47,8 +49,8 @@ namespace homework
             }
 
         }
-        public class Bungalow : architecture
-        {
+        public class Bungalow : IArchitecture
+    {
             public void numOfBedrooms()
             {
                 Console.WriteLine("i have 2 bedrroms");
@@ -71,8 +73,8 @@ namespace homework
             }
 
         }
-        public class Flat : architecture
-        {
+        public class Flat : IArchitecture
+    {
             public void numOfBedrooms()
             {
                 Console.WriteLine("i have 3 bedrroms");
@@ -95,8 +97,8 @@ namespace homework
             }
 
         }
-        public class Studio : architecture
-        {
+        public class Studio : IArchitecture
+    {
             public void numOfBedrooms()
             {
                 Console.WriteLine("i have 1 bedrroms");
@@ -119,8 +121,8 @@ namespace homework
             }
 
         }
-        public class PlayBoyMansion : architecture
-        {
+        public class PlayBoyMansion : IArchitecture
+    {
             public void numOfBedrooms()
             {
                 Console.WriteLine("i have 25 bedrroms");
@@ -141,7 +143,20 @@ namespace homework
             {
                 Console.WriteLine("i have 66 cleaners");
             }
-
+        }
+    
+    class Properties
+    {
+        public static IArchitecture getProperty(string properties)
+        {
+            if (properties == "Mansion")
+            {
+                return new Mansion();
+            }
+            else
+            {
+                return new Flat();
+            }
         }
     }
 }
